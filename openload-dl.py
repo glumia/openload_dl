@@ -58,3 +58,6 @@ print('Download di '+filename+' completato!')
 
 
 
+
+os.remove('geckodriver.log')
+
