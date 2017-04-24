@@ -7,14 +7,20 @@ import os
 import sys
 import urllib
 import time
-import selenium
 from selenium import webdriver
+from pyvirtualdisplay import Display
+
 
 url=sys.argv[1]
 filename=url.split('/')[-1]
 
 
 print("Estrazione link download")
+
+
+#Creo un display virtuale per il browser
+display = Display(visible=0, size=(800, 600))
+display.start()
 
 browser=webdriver.Firefox()
 browser.get(url)
@@ -50,6 +56,8 @@ browser.switch_to.window(browser.window_handles[0])
 button=browser.find_element_by_css_selector('#realdl > a:nth-child(1)')
 downloadurl=button.get_attribute('href')
 browser.quit()
+display.stop()
+
 
 
 print('Download di '+filename+' in corso...')
