@@ -1,0 +1,7 @@
+Just install python3 and the script requirements:
+
+sudo apt-get update
+sudo apt-get install python3-pip
+sudo pip3 install selenium
+sudo pip3 install pyvirtualdisplay
+sudo apt-get install xvfb
