@@ -8,3 +8,5 @@ Example:
 
 
 Requirements: Selenium, pyvirtualdisplay, Xvfb
+
+Check 'ubuntu_installation' for the ubuntu requirements installation guide
