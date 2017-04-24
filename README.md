@@ -1,14 +1,11 @@
 # openload-dl
-Simple openload download script - Python + Selenium
-
-Command-Line Openload video downloader
+Simple command-line download script - Python + Selenium
 
 Usage:  openload-dl [url]
 
 Example: ./openload-dl 'https://openload.co/f/UqAeeBcR1-o/myvideo.mp4'
 
 Requirements: Selenium, pyvirtualdisplay, Xvfb
-
 
 
 Ubuntu Installation guide:
