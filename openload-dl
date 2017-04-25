@@ -19,17 +19,18 @@ else:
 
 
 
-#Creo un display virtuale per il browser
+#Creo un display virtuale per il browser e lo avvio
 display = Display(visible=0, size=(800, 600))
 display.start()
+browser=webdriver.Firefox()
 
 for url in linklist:
-    filename=url.split('/')[-1]
-    print("Estrazione link di download per "+filename)
-
-    
-    browser=webdriver.Firefox()
     browser.get(url)
+    
+    #Estraggo il nome del media
+    button=browser.find_element_by_css_selector('.other-title-bold')
+    filename=button.text
+    print("Estrazione link di download per "+filename)
     
     #Cerco il bottone che devo cliccare
     button=browser.find_element_by_css_selector('#btnDl')
@@ -61,7 +62,7 @@ for url in linklist:
     #Prendo l'url per il download e chiudo il browser
     button=browser.find_element_by_css_selector('#realdl > a:nth-child(1)')
     downloadurl=button.get_attribute('href')
-    browser.quit()
+    browser.close()
     
      
     print('Download di '+filename+' in corso...')
@@ -69,6 +70,6 @@ for url in linklist:
     print('Download di '+filename+' completato!')
     
 
-
+browser.quit()
 display.stop()
 os.remove('geckodriver.log')
