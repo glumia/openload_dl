@@ -5,3 +5,5 @@ sudo apt-get install python3-pip
 sudo pip3 install selenium
 sudo pip3 install pyvirtualdisplay
 sudo apt-get install xvfb
+
+Download geckodriver from: https://github.com/mozilla/geckodriver/releases, extract it and move it to /usr/local/bin
