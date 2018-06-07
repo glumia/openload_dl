@@ -5,7 +5,7 @@ openload-dl - Command-line script to download videos from openload inspired to y
 - [DESCRIPTION](#description)
 
 
-#Installation
+# Installation
 
 To satisfy the requirements of the script on a Ubuntu system, type:
 
@@ -19,7 +19,7 @@ Then download the latest release of geckodriver compatible with your system from
 
 
 
-#Description
+# Description
 **openload-dl** is a script written in Python which uses selenium and virtual displays to automate the download of videos from openload.co through the use of a simple command.
 
     openload-dl URL
