@@ -20,7 +20,7 @@ Then download the latest release of geckodriver compatible with your system from
 
 
 # Description
-**openload-dl** is a script written in Python which uses selenium and virtual displays to automate the download of videos from openload.co through the use of a simple command.
+**openload-dl** is a script written in Python to automate the download of videos from openload.co with a simple command-line interface
 
     openload-dl URL
 
