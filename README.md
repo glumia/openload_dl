@@ -9,14 +9,10 @@ openload-dl - Command-line script to download videos from openload inspired to y
 
 To satisfy the requirements of the script on a Ubuntu system, type:
 
-    sudo apt-get install python3-pip
-    sudo apt-get install xvfb
+    sudo apt install chromium-browser
+    sudo apt install python3-pip
     sudo pip3 install selenium
-    sudo pip3 install pyvirtualdisplay
     sudo pip3 install requests
-
-Then download the latest release of geckodriver compatible with your system from https://github.com/mozilla/geckodriver/releases, extract the archive and put the executable in /usr/local/bin
-
 
 
 # Description
