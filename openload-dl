@@ -7,7 +7,6 @@ import sys
 import requests
 import time
 from selenium import webdriver
-from pyvirtualdisplay import Display
 
 #We need these to avoid bot blocking by openload
 mozilla_header={'User-Agent':'Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0'}
@@ -20,57 +19,49 @@ if sys.argv[1].split('.')[-1]=='txt':
 else:
     links=[sys.argv[1]]
 
-    
-#We create a virtual display for the browser and then we start it
-display = Display(visible=0, size=(800, 600))
-display.start()
-browser=webdriver.Firefox()
+#Setting headless Chrome option
+chrome_opt=webdriver.ChromeOptions()
+chrome_opt.add_argument('--headless')
 
 for url in links:
-    browser.get(url)
-
-    #Extracting file name
-    button=browser.find_element_by_css_selector('.other-title-bold')
-    filename=button.text
-    print("Extracting download link for "+filename)
+    with webdriver.Chrome(chrome_options=chrome_opt) as browser:
+        browser.get(url)
     
-    #We search the button we have to click for the download
-    button=browser.find_element_by_css_selector('#btnDl')
+        #Extracting file name
+        button=browser.find_element_by_css_selector('.other-title-bold')
+        filename=button.text
+        print("Extracting download link for "+filename)
+        
+        #We search the button we have to click for the download
+        button=browser.find_element_by_css_selector('#btnDl')
+        
+        #Clicking and closing popup windows
+        button.click()
+        while(len(browser.window_handles)>1):
+            browser.switch_to.window(browser.window_handles[-1])
+            browser.close()
+        browser.switch_to.window(browser.window_handles[0])
     
-    #Clicking and closing popup windows
-    button.click()
-    while(len(browser.window_handles)>1):
-        browser.switch_to.window(browser.window_handles[-1])
-        browser.close()
-    browser.switch_to.window(browser.window_handles[0])
-
-    #Waiting 5 sec timer
-    time.sleep(6)
+        #Waiting 5 sec timer
+        time.sleep(6)
+        
+        #Searching the next button
+        button=browser.find_element_by_css_selector('span#secondsleftouter')
+        
+        #Clicking and closing popup windows
+        button.click()
+        while(len(browser.window_handles)>1):
+            browser.switch_to.window(browser.window_handles[-1])
+            browser.close()
+        browser.switch_to.window(browser.window_handles[0])
+        
     
-    #Searching the next button
-    button=browser.find_element_by_css_selector('span#secondsleftouter')
+        #Gathering direct url for download
+        button=browser.find_element_by_css_selector('a.main-button:nth-child(1)')
+        downloadurl=button.get_attribute('href')
     
-    #Clicking and closing popup windows
-    button.click()
-    while(len(browser.window_handles)>1):
-        browser.switch_to.window(browser.window_handles[-1])
-        browser.close()
-    browser.switch_to.window(browser.window_handles[0])
-    
-
-    #Gathering direct url for download
-    button=browser.find_element_by_css_selector('a.main-button:nth-child(1)')
-    downloadurl=button.get_attribute('href')
-
-    #Now we can download the file
-    print('Download of '+filename+' in progress...')
-    with open(filename,'wb') as fp:
-        fp.write(requests.get(downloadurl,headers=mozilla_header).content)
-    print('Download of '+filename+' completed!')
-    
-
-#Closing browser, virtual display and removing geckodriver logfile
-browser.quit()
-display.stop()
-os.remove('geckodriver.log')
-
+        #Now we can download the file
+        print('Download of '+filename+' in progress...')
+        with open(filename,'wb') as fp:
+            fp.write(requests.get(downloadurl,headers=mozilla_header).content)
+        print('Download of '+filename+' completed!')
