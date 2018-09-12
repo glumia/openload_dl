@@ -2,7 +2,6 @@
 
 #Openload Downloader 
 
-import os
 import sys
 import requests
 import time
@@ -19,12 +18,16 @@ if sys.argv[1].split('.')[-1]=='txt':
 else:
     links=[sys.argv[1]]
 
-#Setting headless Chrome option
-chrome_opt=webdriver.ChromeOptions()
-chrome_opt.add_argument('--headless')
+
+#Setting headless browser option
+fox_opt=webdriver.FirefoxOptions()
+fox_opt.add_argument('--headless')
+#chrome_opt=webdriver.ChromeOptions()
+#chrome_opt.add_argument('--headless')
 
 for url in links:
-    with webdriver.Chrome(chrome_options=chrome_opt) as browser:
+    with webdriver.Firefox(firefox_options=fox_opt) as browser:
+    #with webdriver.Chrome(chrome_options=chrome_opt) as browser:    
         browser.get(url)
     
         #Extracting file name
@@ -64,4 +67,4 @@ for url in links:
         print('Download of '+filename+' in progress...')
         with open(filename,'wb') as fp:
             fp.write(requests.get(downloadurl,headers=mozilla_header).content)
-        print('Download of '+filename+' completed!')
+print('Download of '+filename+' completed!')
