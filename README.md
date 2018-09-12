@@ -20,18 +20,21 @@ or
 
     sudo apt install chromium-browser
 
-Finally download the latest version of [geckodriver](https://github.com/mozilla/geckodriver/releases) ( for Firefox ) or [chromedriver](http://chromedriver.chromium.org/downloads) ( for Chrome ), extract it and put the executable in the same directory of the script.  
-
 
 On Windows:
 - Install [Python](https://www.python.org/downloads/) (don't forget to check the "ADD TO PATH" option)
 - Install [Firefox](https://www.mozilla.org/it/firefox/) or [Chrome](https://www.google.com/chrome/)
-- Download the latest version of [geckodriver](https://github.com/mozilla/geckodriver/releases) ( for Firefox ) or [chromedriver](http://chromedriver.chromium.org/downloads) ( for Chrome ), extract it and put the executable in the same directory of the script.  
 
 Then open the command prompt and type:
 
     pip3 install selenium
     pip3 install requests
+
+
+On both Ubuntu and Windows: 
+
+Download the latest version of [geckodriver](https://github.com/mozilla/geckodriver/releases) ( for Firefox ) or [chromedriver](http://chromedriver.chromium.org/downloads) ( for Chrome ), extract it and put the executable in the same directory of the script.  
+
 
 
 ## Setting Chrome instead of Firefox ## 
