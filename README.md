@@ -34,6 +34,12 @@ Then open the command prompt and type:
     pip3 install requests
 
 
+## Setting Chrome instead of Firefox ## 
+By default the script works with Firefox. If you want to use Chrome: open the source code with a text editor, comment lines 23,24 and 29 putting a '#' at the beginning and remove the '#' on lines 25,26,30. 
+
+
+
+
 # Description
 **openload-dl** is a script written in Python to automate the download of videos from openload.co with a simple command-line interface
 
