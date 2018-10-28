@@ -59,3 +59,20 @@ Example
 On Windows
 
     python openload-dl 'https://openload.co/f/UqAeeBcR1-o/myvideo.mp4'
+
+To set a folder everything sould be downloaded to, specify the folder as second argument.
+
+    openload-dl URL FOLDER
+
+or with a list of urls
+
+    openload-dl FILE FOLDER
+
+Example
+
+    ./openload-dl 'https://openload.co/f/UqAeeBcR1-o/myvideo.mp4' './myvids/'
+
+On Windows
+
+    python openload-dl 'https://openload.co/f/UqAeeBcR1-o/myvideo.mp4' './myvids/'
+
