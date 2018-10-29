@@ -46,11 +46,11 @@ By default the script works with Firefox. If you want to use Chrome: open the so
 # Description
 **openload-dl** is a script written in Python to automate the download of videos from openload.co with a simple command-line interface
 
-    openload-dl URL
+    openload-dl URL [FOLDER]
 
 or with a list of urls
 
-    openload-dl FILE
+    openload-dl FILE [FOLDER]
 
 Example
 
@@ -60,19 +60,9 @@ On Windows
 
     python openload-dl 'https://openload.co/f/UqAeeBcR1-o/myvideo.mp4'
 
+
 To set a folder everything sould be downloaded to, specify the folder as second argument.
-
-    openload-dl URL FOLDER
-
-or with a list of urls
-
-    openload-dl FILE FOLDER
 
 Example
 
-    ./openload-dl 'https://openload.co/f/UqAeeBcR1-o/myvideo.mp4' './myvids/'
-
-On Windows
-
-    python openload-dl 'https://openload.co/f/UqAeeBcR1-o/myvideo.mp4' './myvids/'
-
+    ./openload-dl 'https://openload.co/f/UqAeeBcR1-o/myvideo.mp4' '~/Videos/myvids/'
