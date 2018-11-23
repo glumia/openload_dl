@@ -38,7 +38,7 @@ Download the latest version of [geckodriver](https://github.com/mozilla/geckodri
 
 
 ## Setting Chrome instead of Firefox ## 
-By default the script works with Firefox. If you want to use Chrome: open the source code with a text editor, comment lines 23,24 and 29 putting a '#' at the beginning and remove the '#' on lines 25,26,30. 
+By default the script works with Firefox. If you want to use Chrome: open the source code with a text editor, comment lines 29,30 and 35 putting a '#' at the beginning and remove the '#' on lines 31,32,36. 
 
 
 
