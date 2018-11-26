@@ -1,68 +1,43 @@
 openload-dl - Command-line script to download videos from openload inspired to youtube-dl
 
 
-- [INSTALLATION](#installation)
-- [DESCRIPTION](#description)
+- [Installation](#Installation)
+- [Description](#Description)
 
 
 # Installation
-
-To satisfy the requirements of the script on a Ubuntu system, type:
+Ubuntu or other unix-lixe systems:
 
     sudo apt install python3-pip
-    sudo pip3 install selenium
-    sudo pip3 install requests
-
-You'll also need Firefox or Chrome browser, so if neither of the two is installed on you system just type:
-
-    sudo apt install firefox
-or
-
-    sudo apt install chromium-browser
+    pip3 install -r requirements.txt
 
 
-On Windows:
-- Install [Python](https://www.python.org/downloads/) (don't forget to check the "ADD TO PATH" option)
-- Install [Firefox](https://www.mozilla.org/it/firefox/) or [Chrome](https://www.google.com/chrome/)
-
+Windows:  
+  
+Install [Python](https://www.python.org/downloads/) (don't forget to check the "ADD TO PATH" option).  
 Then open the command prompt and type:
 
-    pip3 install selenium
-    pip3 install requests
+    pip3 install -r requirements.txt
+  
+On both Ubuntu and Windows:  
 
+Download the latest version of [geckodriver](https://github.com/mozilla/geckodriver/releases) ( for Firefox ) or [chromedriver](http://chromedriver.chromium.org/downloads) ( for Chrome ), extract it and add the executable to PATH or put it in the same directory of the script.
 
-On both Ubuntu and Windows: 
-
-Download the latest version of [geckodriver](https://github.com/mozilla/geckodriver/releases) ( for Firefox ) or [chromedriver](http://chromedriver.chromium.org/downloads) ( for Chrome ), extract it and put the executable in the same directory of the script.  
-
-
-
-## Setting Chrome instead of Firefox ## 
-By default the script works with Firefox. If you want to use Chrome: open the source code with a text editor, comment lines 29,30 and 35 putting a '#' at the beginning and remove the '#' on lines 31,32,36. 
-
-
-
+[In order for this script to work you need to have [Firefox](https://www.mozilla.org/it/firefox/new/) or [Chrome](https://www.google.com/chrome/) installed on your system.]
 
 # Description
-**openload-dl** is a script written in Python to automate the download of videos from openload.co with a simple command-line interface
-
-    openload-dl URL [FOLDER]
-
-or with a list of urls
-
-    openload-dl FILE [FOLDER]
-
-Example
-
-    ./openload-dl 'https://openload.co/f/UqAeeBcR1-o/myvideo.mp4'
-
-On Windows
-
-    python openload-dl 'https://openload.co/f/UqAeeBcR1-o/myvideo.mp4'
+**openload-dl** is a script written in Python to automate the download of videos from openload.co with a simple command-line interface.
+    
+    Usage:
+    openload-dl [options] URL
+        
+    Options:
+        -e, --extract-dlurl     Extract only direct url to file
+        -o <file>               Download content into <file>
+        --chrome                Use chrome browser instead of firefox
+        --no-headless           Show the browser
+        --chunk-size <csize>    Set the downloader chunk size in bytes (default 1MB)                     
+        -h, --help              Print this help and exit
+        -v, --version           Print version and exit
 
 
-To set a folder everything sould be downloaded to, specify the folder as second argument.
-
-Example
-
-    ./openload-dl 'https://openload.co/f/UqAeeBcR1-o/myvideo.mp4' '~/Videos/myvids/'

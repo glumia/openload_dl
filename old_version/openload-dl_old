@@ -1,0 +1,76 @@
+#!/usr/bin/python3
+
+#Openload Downloader 
+
+import sys
+import requests
+import time
+from selenium import webdriver
+
+#We need these to avoid bot blocking by openload
+mozilla_header={'User-Agent':'Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0'}
+
+#Reading command arguments
+if sys.argv[1].split('.')[-1]=='txt':
+    with open(sys.argv[1],'r') as urlfile:
+        links = urlfile.read().splitlines() 
+        print('Download in sequence of '+str(len(links))+' files of the list '+sys.argv[1])
+else:
+    links=[sys.argv[1]]
+folder_prefix = ""
+if len(sys.argv) == 3:
+    if sys.argv[2].endswith("/"):
+        folder_prefix = sys.argv[2]
+    else:
+        folder_prefix = sys.argv[2] + "/"
+
+
+#Setting headless browser option
+fox_opt=webdriver.FirefoxOptions()
+fox_opt.add_argument('--headless')
+#chrome_opt=webdriver.ChromeOptions()
+#chrome_opt.add_argument('--headless')
+
+for url in links:
+    with webdriver.Firefox(firefox_options=fox_opt) as browser:
+    #with webdriver.Chrome(chrome_options=chrome_opt) as browser:    
+        browser.get(url)
+    
+        #Extracting file name
+        button=browser.find_element_by_css_selector('.other-title-bold')
+        filename=folder_prefix + button.text
+        print("Extracting download link for "+filename)
+        
+        #We search the button we have to click for the download
+        button=browser.find_element_by_css_selector('#btnDl')
+        
+        #Clicking and closing popup windows
+        button.click()
+        while(len(browser.window_handles)>1):
+            browser.switch_to.window(browser.window_handles[-1])
+            browser.close()
+        browser.switch_to.window(browser.window_handles[0])
+    
+        #Waiting 5 sec timer
+        time.sleep(6)
+        
+        #Searching the next button
+        button=browser.find_element_by_css_selector('span#secondsleftouter')
+        
+        #Clicking and closing popup windows
+        button.click()
+        while(len(browser.window_handles)>1):
+            browser.switch_to.window(browser.window_handles[-1])
+            browser.close()
+        browser.switch_to.window(browser.window_handles[0])
+        
+    
+        #Gathering direct url for download
+        button=browser.find_element_by_css_selector('a.main-button:nth-child(1)')
+        downloadurl=button.get_attribute('href')
+    
+        #Now we can download the file
+        print('Download of '+filename+' in progress...')
+        with open(filename,'wb') as fp:
+            fp.write(requests.get(downloadurl,headers=mozilla_header).content)
+print('Download of '+filename+' completed!')
