@@ -6,7 +6,7 @@ openload-dl - Command-line script to download videos from openload inspired to y
 
 
 # Installation
-Ubuntu or other unix-lixe systems:
+Ubuntu or Debian:
 
     sudo apt install python3-pip
     pip3 install -r requirements.txt

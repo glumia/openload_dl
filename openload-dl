@@ -7,7 +7,8 @@ Options:
     -o <file>               Download content into <file>
     --chrome                Use chrome browser instead of firefox
     --no-headless           Show the browser
-    --chunk-size <csize>    Set the downloader chunk size in bytes (default 1MB)                     
+    --chunk-size <csize>    Set the downloader chunk size in 
+                            bytes (default 1MB)                     
     -h, --help              Print this help and exit
     -v, --version           Print version and exit
 """
@@ -52,6 +53,7 @@ def get_dlurl(url,browser):
     dlurl=requests.get(dlurl,headers={'User-Agent':browser.execute_script("return navigator.userAgent")},allow_redirects=False).headers['location']
     return dlurl
 
+
 def download_file(dlurl,filename=None,csize=1000*1000):
     r=requests.get(dlurl,stream=True)
     file_size=int(r.headers['Content-Length'])
@@ -64,7 +66,7 @@ def download_file(dlurl,filename=None,csize=1000*1000):
     if first_byte >= file_size:
         return file_size
     r=requests.get(dlurl,headers={"Range": "bytes=%s-%s" % (first_byte, file_size)}, stream=True)
-    with tqdm(total=file_size, initial=first_byte, unit='B',unit_scale=True, desc=filename) as pbar:
+    with tqdm(total=file_size, initial=first_byte, unit='B',unit_scale=True, desc=filename[0:6]+"..."+filename[-7:]) as pbar:
         with open(filename,'ab') as fp:
             for chunk in r.iter_content(chunk_size=csize):
                 fp.write(chunk)
@@ -95,10 +97,11 @@ if __name__=="__main__":
             browser=webdriver.Firefox(firefox_options=fox_opt)
     if args['--extract-dlurl']==True:
         print(get_dlurl(args['URL'],browser))
+        browser.quit()
     else:
         dlurl=get_dlurl(args['URL'],browser)
+        browser.quit()
         download_file(dlurl,args['-o'],csize)
-    browser.quit()
     if os.path.exists('geckodriver.log'):
         os.remove('geckodriver.log')
     if os.path.exists('chromedriver.log'):
