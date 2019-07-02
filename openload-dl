@@ -20,7 +20,7 @@ from selenium import webdriver
 from tqdm import tqdm
 from docopt import docopt
 
-__author__ ="gius-italy"
+__author__ ="glumia"
 __license__="GPLv3"
 __version__="1.0"
 __email__="gius-italy@live.it"
