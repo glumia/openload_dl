@@ -5,7 +5,7 @@ with open("README.md", "r") as fp:
 
 setuptools.setup(
     name="openload_dl",
-    version="2.0.0",
+    version="2.0.1",
     author="Giuseppe Lumia",
     author_email="glumia@protonmail.com",
     description="openload_dl is a python library and CLI tool which makes easy to download files from openload.co",
