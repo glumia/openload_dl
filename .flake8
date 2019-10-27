@@ -1,0 +1,12 @@
+[flake8]
+exclude =
+    __pycache__/,
+    .pytest_cache/,
+    .idea/
+filename =
+    *.py
+max-complexity = 22
+max-line-length = 120
+show_source = True
+verbose = 1
+ignore = F401,W503,E203

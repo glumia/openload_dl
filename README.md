@@ -1,4 +1,5 @@
-openload-dl - Command-line script to download videos from openload inspired to youtube-dl
+# openload_dl
+A python library and CLI tool which makes easy to download videos from openload.co
 
 
 - [Installation](#Installation)
@@ -9,7 +10,7 @@ openload-dl - Command-line script to download videos from openload inspired to y
 Ubuntu or Debian:
 
     sudo apt install python3-pip
-    pip3 install -r requirements.txt
+    pip3 install openload_dl
 
 
 Windows:  
@@ -17,7 +18,7 @@ Windows:
 Install [Python](https://www.python.org/downloads/) (don't forget to check the "ADD TO PATH" option).  
 Then open the command prompt and type:
 
-    pip3 install -r requirements.txt
+    pip3 install openload_dl
   
 On both Ubuntu and Windows:  
 
@@ -26,18 +27,20 @@ Download the latest version of [geckodriver](https://github.com/mozilla/geckodri
 [In order for this script to work you need to have [Firefox](https://www.mozilla.org/it/firefox/new/) or [Chrome](https://www.google.com/chrome/) installed on your system.]
 
 # Description
-**openload-dl** is a script written in Python to automate the download of videos from openload.co with a simple command-line interface.
+
+    Usage: openload-dl [OPTIONS] [URLS]...
     
-    Usage:
-    openload-dl [options] URL
-        
     Options:
-        -e, --extract-dlurl     Extract only direct url to file
-        -o <file>               Download content into <file>
-        --chrome                Use chrome browser instead of firefox
-        --no-headless           Show the browser
-        --chunk-size <csize>    Set the downloader chunk size in bytes (default 1MB)                     
-        -h, --help              Print this help and exit
-        -v, --version           Print version and exit
+      --get-download-url              Extract only file's download url
+      --preferred-browser [firefox|chrome]
+                                      Select the browser to use  [default:
+                                      firefox]
+      --no-headless                   Show the browser
+      --chunk-size INTEGER            Set the downloader chunk size in bytes
+                                      [default: 1000000]
+      -q, --quiet                     Don't print download progress information
+      --help                          Show this message and exit.
+
+
 
 
