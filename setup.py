@@ -8,7 +8,7 @@ setuptools.setup(
     version="2.0.0",
     author="Giuseppe Lumia",
     author_email="glumia@protonmail.com",
-    description="openload_dl is a python library and CLI tool which makes easy to download videos from openload.co",
+    description="openload_dl is a python library and CLI tool which makes easy to download files from openload.co",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/glumia/openload_dl",

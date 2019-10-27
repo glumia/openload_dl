@@ -10,6 +10,6 @@ lint:
 
 
 publish:
-	python setup.py sdist bdist_wheel
+	python3 setup.py sdist bdist_wheel
 	twine upload dist/*
 	rm -fr build dist .egg *.egg-info
