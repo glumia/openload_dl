@@ -3,7 +3,7 @@ A python library and CLI tool which makes easy to download files from openload.c
 
 
 - [Installation](#Installation)
-- [Description](#Description)
+- [Examples](#Examples)
 
 
 # Installation
@@ -26,9 +26,9 @@ Download the latest version of [geckodriver](https://github.com/mozilla/geckodri
 
 [In order for this script to work you need to have [Firefox](https://www.mozilla.org/it/firefox/new/) or [Chrome](https://www.google.com/chrome/) installed on your system.]
 
-# Description
-
-    Usage: openload-dl [OPTIONS] [URLS]...
+# Examples
+## Command-line
+    Usage: openload_dl [OPTIONS] [URLS]...
     
     Options:
       --get-download-url              Extract only file's download url
@@ -41,6 +41,12 @@ Download the latest version of [geckodriver](https://github.com/mozilla/geckodri
       -q, --quiet                     Don't print download progress information
       --help                          Show this message and exit.
 
-
+## Python
+    >>> import openload_dl
+    >>> oload = openload_dl.OpenloadDownloader()
+    >>> oload.get_durl("https://openload.co/f/12345678900/myvideo.mp4")  # Get a download url for the file
+    'https://123abcd.oloadcdn.net/dl/l/ism-abc123abc123/12345678900/myvideo.mp4'
+    >>> oload.download("https://openload.co/f/12345678900/myvideo.mp4")
+    myvideo.mp4:   5%|▌         | 5.00M/96.4M [00:13<03:45, 404kB/s]
 
 

@@ -8,7 +8,7 @@ setuptools.setup(
     version="2.0.1",
     author="Giuseppe Lumia",
     author_email="glumia@protonmail.com",
-    description="openload_dl is a python library and CLI tool which makes easy to download files from openload.co",
+    description="A python library and CLI tool which makes easy to download files from openload.co",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/glumia/openload_dl",
@@ -19,6 +19,6 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.6",
-    entry_points={"console_scripts": ["openload-dl = openload_dl.script:openload_cli"]},
+    entry_points={"console_scripts": ["openload_dl = openload_dl.script:openload_cli"]},
     install_requires=["requests", "selenium", "click", "tqdm"],
 )
