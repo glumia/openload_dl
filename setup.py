@@ -7,7 +7,7 @@ setuptools.setup(
     name="openload_dl",
     version="2.0.1",
     author="Giuseppe Lumia",
-    author_email="glumia@protonmail.com",
+    author_email="gius@glumia.dev",
     description="A python library and CLI tool which makes easy to download files from openload.co",
     long_description=long_description,
     long_description_content_type="text/markdown",
